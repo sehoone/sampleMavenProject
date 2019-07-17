@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="warn">
+ 
+    <Properties>
+        <Property name="basePath">/home/tomcat/tomcat8_application/logs</Property>
+    </Properties>
+ 
+    <Appenders>
+        <RollingFile name="fileLogger" fileName="${basePath}/application.log" filePattern="${basePath}/application-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-4level] DEFAULT_LOG, %d{yyyy-MM-dd HH:mm:ss.SSS},[%t], %msg%n</pattern>
+            </PatternLayout>
+            <JSONLayout complete="true" compact="false"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+        </RollingFile>
+        
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout   pattern="[%-5level] DEFAULT_LOG, %d{yyyy-MM-dd HH:mm:ss.SSS},[%t], %msg%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.sampleFramework" level="debug" additivity="true">
+            <appender-ref ref="fileLogger" level="debug" />
+            <appender-ref ref="fileErrorLogger" level="error" />
+        </Logger>
+        <Root level="debug" additivity="false">
+            <appender-ref ref="console" />
+        </Root>
+    </Loggers> 
+</Configuration>
