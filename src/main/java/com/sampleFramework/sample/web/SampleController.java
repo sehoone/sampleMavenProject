@@ -24,12 +24,12 @@ public class SampleController extends BaseController {
 	@RequestMapping(value = "/testReqest")
 	public String testReqest(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 	
-		//String testStr = sampleService.getForDatabaseTest();
+		String testStr = sampleService.getForDatabaseTest();
 		log.info("testReqest request start");
 		
 		model.addAttribute("title", "sampleView");
 		model.addAttribute("name", "sehoon");
-		//model.addAttribute("dbResult", testStr);
+		model.addAttribute("dbResult", testStr);
 
 		return "sample/sampleView";
 	}

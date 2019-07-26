@@ -28,5 +28,9 @@ public class BaseDAOImpl implements BaseDAO {
 	public int update(String id, Object object) {
 		return sqlSession.update(id, object);
 	}
+	
+	public int delete(String id, Object object) {
+		return sqlSession.delete(id, object);
+	}
 
 }

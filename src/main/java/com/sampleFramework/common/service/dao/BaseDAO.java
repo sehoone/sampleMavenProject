@@ -12,4 +12,6 @@ public interface BaseDAO {
 
 	public int update(String id, Object object);
 	
+	public int delete(String id, Object object);
+	
 }
